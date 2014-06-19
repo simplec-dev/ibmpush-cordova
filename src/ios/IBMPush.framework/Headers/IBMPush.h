@@ -7,14 +7,14 @@
 
 #import <Foundation/Foundation.h>
 
-#import <IBMBaaS/IBMBaaSService.h>
-#import <IBMBaaS/BFTask.h>
+#import <IBMBluemix/IBMBluemixService.h>
+#import <IBMBluemix/BFTask.h>
 
 /*!
  * @class Operations supported by the Push Notification SDK
  *
  */
-@interface IBMPush : IBMBaaSService{
+@interface IBMPush : IBMBluemixService{
 	
 	NSString* deviceToken;
 }
