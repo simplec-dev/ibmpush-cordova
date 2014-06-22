@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <Cordova/CDV.h>
 #import <IBMPush/IBMPush.h>
-#import <IBMBaaS/IBMBaaS.h>
+#import <IBMBluemix/IBMBluemix.h>
 
 @interface CDVIBMPush : CDVPlugin
 

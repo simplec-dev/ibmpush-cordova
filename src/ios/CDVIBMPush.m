@@ -9,7 +9,7 @@
 #import "CDVIBMPush.h"
 #import "AppDelegate.h"
 #import <IBMPush/IBMPush.h>
-#import <IBMBaaS/IBMBaaS.h>
+#import <IBMBluemix/IBMBluemix.h>
 
 @interface CDVIBMPush ()
 

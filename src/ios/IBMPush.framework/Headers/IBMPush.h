@@ -17,11 +17,9 @@
 @interface IBMPush : IBMBluemixService{
 	
 	NSString* deviceToken;
+    NSString* endpoint;
+    NSInteger defaultTimeout;
 }
-
-@property (readonly,nonatomic) NSString* endpoint;
-@property NSInteger defaultTimeout;
-
 
 /*!
  * Gets all the available Tags for the backend mobile application
@@ -58,7 +56,20 @@
  */
 - (BFTask*) unsubscribeFromTag :(NSString*) tag;
 
+/*!
+ * This method initializes the singleton instance of the IBMPush Service for this application.
+ *
+ * @return The instance of the initialized IBMPush Service
+ *
+ */
 +(instancetype) initializeService;
+
+/*!
+ * This method returns the singleton instance of the IBMPush Service for this application.
+ *
+ * @return The instance of IBMPush service
+ *
+ */
 +(instancetype) service;
 
 
