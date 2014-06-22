@@ -12,18 +12,18 @@ Provides access to the IBMPush
 
 Prerequisite: The com.ibm.mobile.services.cordova.core plugin is required.  Follow the manual installation directions for the plugin.
 
-1) Copy the `IBMPush.hybrid.js` file to your Worklight app project's `common/js` folder.  Then rebuild the Worklight Environment and the file will be copied to the correct Android app location.
+1) Copy the `IBMPushHybrid.js` file to your Worklight app project's `common/js` folder.  Then rebuild the Worklight Environment and the file will be copied to the correct Android app location.
 
-2) Reference `IBMPush.hybrid.js` in your main `index.html` file after the `worklight/cordova.js` script tag.
+2) Reference `IBMPushHybrid.js` in your main `index.html` file after the `worklight/cordova.js` script tag.
 
 ```html
-<script type="text/javascript" src="js/IBMPush.hybrid.js"></script>
+<script type="text/javascript" src="js/IBMPushHybrid.js"></script>
 ```
 
 3) Copy the following files to your projects `libs` folder:
 ```
 src/android/ibmpush.jar
-src/android/ibmpush-cordova-plugin.jar
+src/android/ibmpush-cordova.jar
 src/android/android-support-v4.jar
 src/android/google-play-services.jar
 ```
@@ -46,7 +46,7 @@ Note: First replace the instances of $PACKAGE_NAME below with the value of the `
 5) Modify the `Resources/config.xml` file in your project, to add a plugin reference to the `widget` tag:
 
 ```xml
-<feature name="IBMPush">
+<feature name="IBMPushHybrid">
     <param name="android-package" value="com.ibm.mobile.services.cordova.push.CDVIBMPush" />
 </feature>
 ```
@@ -55,9 +55,9 @@ Note: First replace the instances of $PACKAGE_NAME below with the value of the `
 
 Prerequisite: The com.ibm.mobile.services.cordova.core plugin is required.  Follow the manual installation directions for the plugin.
 
-1) Copy the `IBMPush.hybrid.js` file to your Worklight app project's `common/js` folder.  Then rebuild the Worklight Environment and the file will be copied to the correct iOS app location.
+1) Copy the `IBMPushHybrid.js` file to your Worklight app project's `common/js` folder.  Then rebuild the Worklight Environment and the file will be copied to the correct iOS app location.
 
-2) Reference `IBMPush.hybrid.js` in your main `index.html` file after the `worklight/cordova.js` script tag.
+2) Reference `IBMPushHybrid.js` in your main `index.html` file after the `worklight/cordova.js` script tag.
 
 ```html
 <script type="text/javascript" src="js/IBMPush.hybrid.js"></script>
@@ -77,7 +77,7 @@ CDVIBMPush.m
 5) Modify the `Resources/config.xml` file in your project, to add a plugin reference to the `widget` tag:
 
 ```xml
-<feature name="IBMPush">
+<feature name="IBMPushHybrid">
     <param name="ios-package" value="CDVIBMPush" />
 </feature>
 ```
@@ -86,7 +86,7 @@ CDVIBMPush.m
 
 ## IBMPush API
 
-IBMBaaS provides access to the following methods.
+IBMPush provides access to the following methods.
 
 - IBMPush.initializeService
 - IBMPush.registerDevice
@@ -95,23 +95,10 @@ IBMBaaS provides access to the following methods.
 - IBMPush.subscribeTag
 - IBMPush.unsubscribeTag
 
+## Getting Started Guide
 
-## IBMPush.initializeService
+For quick usage information, see the [Getting Started Guide](https://mbaas-gettingstarted.stage1.ng.bluemix.net/hybrid)
 
-The `IBMPush.initializeService` method will initialize the IBMPush SDK.
-
-
-### Example
-
-    function onSuccess() {
-        alert('Successfully initialized IBMPush SDK.');
-    };
-
-    function onError(initializationError) {
-         alert('Error occurred when initializing IBMPush SDK.');
-    };
-
-    IBMPush.initializeService(onSuccess, onError);
 
 ## Supported Platforms
 

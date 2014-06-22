@@ -476,6 +476,19 @@ function IBMPushService(hybrid) {
   IBMPushService.prototype = {
     hybrid: null,
     registerDevice: function (consumerId, alias, pushCallback) {
+      var defer = Q.defer();
+      if (_.isNull(pushCallback) || !_.isFunction(pushCallback)) {
+        defer.reject("Invalid Callback function");
+        return defer.promise;
+      }
+      if (_.isNull(alias) || !_.isString(alias)) {
+        defer.reject("Invalid alias");
+        return defer.promise;
+      }
+      if (_.isNull(customerId) || !_.isString(customerId)) {
+        defer.reject("Invalid customerId");
+        return defer.promise;
+      }
       return this.hybrid.exec("registerDevice", [
         consumerId,
         alias,
@@ -483,15 +496,25 @@ function IBMPushService(hybrid) {
       ]);
     },
     subscribeTag: function (tagName) {
+      var defer = Q.defer();
+      if (!_.isString(tagName)) {
+        defer.reject("Invalid tagName property");
+        return defer.promise;
+      }
       return this.hybrid.exec("subscribeTag", [tagName]);
     },
     unsubscribeTag: function (tagName) {
+      var defer = Q.defer();
+      if (!_.isString(tagName)) {
+        defer.reject("Invalid tagName property");
+        return defer.promise;
+      }
       return this.hybrid.exec("unsubscribeTag", [tagName]);
     },
     getTags: function () {
       return this.hybrid.exec("getTags", []);
     },
-    getSubscriptions: function (IBMPushResponseListener) {
+    getSubscriptions: function () {
       return this.hybrid.exec("getSubscriptions", []);
     }
   };
@@ -512,7 +535,7 @@ var IBMPush = {
         return this.VERSION;
       },
       getService: function () {
-        if (!this._push) {
+        if (!_.isObject(this._push)) {
           throw new IBMError("Push Service not initialized. Call initializeService()");
         }
         return this._push;
@@ -1569,13 +1592,17 @@ var IBMPushHybrid = _.extend({}, _IBMPush, {
         if (!(IBMBluemix && Q && _ && IBMHybrid)) {
           throw new Error("IBMBluemix has not been initialised");
         }
-        if (_.isNull(this.hybrid) && _.isObject(this.hybrid)) {
+        if (_.isNull(this.hybrid) || !_.isObject(this.hybrid)) {
           this.hybrid = new IBMHybrid("IBMPushHybrid");
         }
         var defer = Q.defer();
         try {
           this.hybrid.exec("initializeService", []).then(function () {
             this._push = new IBMPushService(hybrid);
+            if (!_.isObject(this._push)) {
+              defer.reject("Failed to create IBM Push Service object");
+              return defer.promise;
+            }
             defer.resolve(this._push);
           }, function () {
             defer.reject("IBMPush Hybrid could not be initialized");
