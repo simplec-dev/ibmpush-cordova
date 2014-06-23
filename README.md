@@ -1,161 +1,85 @@
-# com.ibm.mobile.services.cordova.push
+Push service SDK for IBM Bluemix
+===
 
-Provides access to the IBMPush
+BlueMix supports IBM's MobileFirst strategy by allowing you as a mobile developer to quickly incorporate pre-built, managed, and scalable cloud services into your mobile applications without relying on IT involvement. You can focus on building your mobile applications rather than the complexities of managing the back end infrastructure.
 
-## Automatic Installation
+When you create a Mobile Cloud Starter application, BlueMix provisions multiple services under a single application context. Your mobile application is given access to the following mobile services: Mobile Application Security, Push, and Mobile Data.
 
-    cordova plugin add com.ibm.mobile.services.cordova.push
+About
+---
 
-## Manual Installation
+The Hybrid JavaScript SDK uses the underlying Cordova runtime to hosting your hybrid application. This SDK then forms a bridge between the Web View and the Mobile Starter Native SDK. With this library you can:
 
-### Manual Installation for Worklight 6.2 projects on Android
+- Reuse the code that is implemented within the Native toolkits, offering a single point of interaction between the Hybrid application and the BlueMix services.
+- Use a single native domain for communication. Take advantage of a single point of security when communicating with BlueMix.
+- Maintain security state of your application if the WebView is restarted on iOS (Apple 10 second rule).
+- Reduce memory overhead of the WebView because less JavaScript is required for the the communication.
+- Communicate through the same technology channel with both both Native and Hybrid (Cross Platform) content.
+- Improve performance when you are using the Native tier of the application for processing of requests.
 
-Prerequisite: The com.ibm.mobile.services.cordova.core plugin is required.  Follow the manual installation directions for the plugin.
+IBMPush - Cordova
+===
 
-1) Copy the `IBMPushHybrid.js` file to your Worklight app project's `common/js` folder.  Then rebuild the Worklight Environment and the file will be copied to the correct Android app location.
+The Mobile Cloud Services SDK is a Cordova SDK you can use inside a Cordova or IBM Worklight application. The `IBMPush` SDK manages all the invocation of calls to the IBM Bluemix Push Service.
 
-2) Reference `IBMPushHybrid.js` in your main `index.html` file after the `worklight/cordova.js` script tag.
+Cordova
+---
+You can find out more information about Cordova and its related services and plugins at the following links.
 
-```html
-<script type="text/javascript" src="js/IBMPushHybrid.js"></script>
-```
+###Cordova Documentation:
 
-3) Copy the following files to your projects `libs` folder:
-```
-src/android/ibmpush.jar
-src/android/ibmpush-cordova.jar
-src/android/android-support-v4.jar
-src/android/google-play-services.jar
-```
+http://cordova.apache.org/docs/en/3.0.0/guide_overview_index.md.html#Overview
 
-4) Modify the `AndroidManifest.xml` file in your project to include the following permissions to the `manifest` tag:
-Note: First replace the instances of $PACKAGE_NAME below with the value of the `manifest` tag `package` attribute from your project.
-
-```xml
-<uses-permission android:name="android.permission.INTERNET" />
-<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-<uses-permission android:name="$PACKAGE_NAME.permission.C2D_MESSAGE" />
-<uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
-<uses-permission android:name="android.permission.WAKE_LOCK" />
-<uses-permission android:name="android.permission.GET_ACCOUNTS" />
-<uses-permission android:name="android.permission.USE_CREDENTIALS" />
-<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-<permission android:name="$PACKAGE_NAME.permission.C2D_MESSAGE" android:protectionLevel="signature" />
-```
-
-5) Modify the `Resources/config.xml` file in your project, to add a plugin reference to the `widget` tag:
-
-```xml
-<feature name="IBMPushHybrid">
-    <param name="android-package" value="com.ibm.mobile.services.cordova.push.CDVIBMPush" />
-</feature>
-```
-
-### Manual Installation for Worklight 6.2 projects on iOS
-
-Prerequisite: The com.ibm.mobile.services.cordova.core plugin is required.  Follow the manual installation directions for the plugin.
-
-1) Copy the `IBMPushHybrid.js` file to your Worklight app project's `common/js` folder.  Then rebuild the Worklight Environment and the file will be copied to the correct iOS app location.
-
-2) Reference `IBMPushHybrid.js` in your main `index.html` file after the `worklight/cordova.js` script tag.
-
-```html
-<script type="text/javascript" src="js/IBMPush.hybrid.js"></script>
-```
-
-3) Copy `IBMPush.framework` framework to your `Frameworks` folder.
-Note: Select `Copy items into destination group's folder` from XCode
-
-4) Copy the the following files to your `Classes` folder:
-Note: Select `Copy items into destination group's folder` from XCode
-
-```
-CDVIBMPush.h
-CDVIBMPush.m
-```
-
-5) Modify the `Resources/config.xml` file in your project, to add a plugin reference to the `widget` tag:
-
-```xml
-<feature name="IBMPushHybrid">
-    <param name="ios-package" value="CDVIBMPush" />
-</feature>
-```
-
-6) Follow the steps in `Set up instructions for the Cordova application to use IBMPush SDK` below for your iOS project.
-
-## IBMPush API
-
-IBMPush provides access to the following methods.
-
-- IBMPush.initializeService
-- IBMPush.registerDevice
-- IBMPush.getTags
-- IBMPush.getSubscriptions
-- IBMPush.subscribeTag
-- IBMPush.unsubscribeTag
+###Cordova plugin development guide
+http://cordova.apache.org/docs/en/2.2.0/guide_plugin-development_index.md.html#Plugin%20Development%20Guide
 
 ## Getting Started Guide
 
-For quick usage information, see the [Getting Started Guide](https://mbaas-gettingstarted.stage1.ng.bluemix.net/hybrid)
+Before you download the plugin or add it to your project you may want to have a read through the more detailed `Getting Started Guide`. For quick usage information, see the [Getting Started Guide](https://mbaas-gettingstarted.ng.bluemix.net/hybrid)
 
+## Setup
+
+To create add a plugin to your project, you first need to have installed the Cordova tools and created a project. You can find more information on how to achieve this from the Cordova project [Command Line Interface](http://cordova.apache.org/docs/en/3.5.0/guide_cli_index.md.html#The%20Command-Line%20Interface)
+
+Adding the plugin to your project
+
+```bash
+cordova plugin add com.ibm.mobile.cordova.ibmpush
+```
+
+Removing the plugin from your project
+
+To install the plugin use the following cordova command
+
+```bash
+cordova plugin remove com.ibm.mobile.cordova.ibmpush
+```
+
+## Manual Installation
+
+IBM Worklight is a Cordova based Hybrid application platform. You can find more information about IBM Worklight at this link [IBM Worklight Foundation](http://www-03.ibm.com/software/products/en/worklight-foundation)
+
+Detailed instructions of how to install the plugin inside an IBM Worklight development environment can be found in the [Getting Started Guide](https://mbaas-gettingstarted.ng.bluemix.net/hybrid)
+
+## IBMPush.hybrid API 
+
+For more information, see the [API Reference](https://mobile.ng.bluemix.net/mbaas-api/docs/JavaScript/index.html)
 
 ## Supported Platforms
 
 - Android
 - iOS
 
+Services
+--
 
-## Set up instructions for the Cordova application to use IBMPush SDK
+Each of the services for the Cordova SDK is in a separate plugin that you can add to your project individually.
 
-To use IBMPush Cordova plugin for iOS, the following setup needs to be done on the Cordova application's AppDelegate.
+This allows maximum flexibility to the developer to individually pick and choose the services that are key to the application. The JavaScript SDK contains the following services.
 
-1) Add the following to AppDelegate.h file
+- [ibmbluemix](https://hub.jazz.net/project/bluemixmobilesdk/ibmbluemix-cordova/overview)
+- [ibmcloudcode](https://hub.jazz.net/project/bluemixmobilesdk/ibmcloudcode-cordova/overview)
+- [ibmdata](https://hub.jazz.net/project/bluemixmobilesdk/ibmdata-cordova/overview)
+- [ibmpush](https://hub.jazz.net/project/bluemixmobilesdk/ibmpush-cordova/overview)
 
-```objective-c
-
-@property (nonatomic, strong) NSData* token;
-
-```
-
-2) Add the following to AppDelegate.m file
-
-```objective-c
-
-// Import the header file.
-#import "CDVIBMPush.h"
-
-// Add this to didFinishLaunchingWithOptions method
-- (BOOL)application:(UIApplication*)application didFinishLaunchingWithOptions:(NSDictionary*)launchOptions
-{
-	 // Register to receive remote notification
-    [application registerForRemoteNotificationTypes:
-    UIRemoteNotificationTypeBadge |
-    UIRemoteNotificationTypeAlert |
-    UIRemoteNotificationTypeSound];
-}
-
-// Add this to didRegisterForRemoteNotificationsWithDeviceToken() method
-- (void)application:(UIApplication*)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData*)deviceToken
-{
-    // Set the device token to be passed onto Cordova plugin.
-    self.token = deviceToken;
-}
-
-// Add this to didFailToRegisterForRemoteNotificationsWithError() method
-- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)err
-{
-	//Failed to receive device token from APNS
-}
-
-// Add this to didReceiveRemoteNotification() method
-- (void)application:(UIApplication*)application didReceiveRemoteNotification:(NSDictionary*)userInfo
-{
-    //Pass the notification to cordova to be sent back to the hybrid application.
-    CDVIBMPush *pushhandler = [self.viewController getCommandInstance:@"IBMPush"];
-    [pushhandler notificationReceived:userInfo];
-}
-
-```
-
-
+Each one of these services can be added to your project.

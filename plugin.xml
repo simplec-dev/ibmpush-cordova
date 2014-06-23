@@ -52,14 +52,18 @@
 	                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
 	
 	                <category android:name="$PACKAGE_NAME" />
-	            </intent-filter>		       
+	            </intent-filter>
+	            <intent-filter>
+              		<action android:name="android.intent.action.BOOT_COMPLETED" />
+
+                	<category android:name="$PACKAGE_NAME" />
+            	</intent-filter>		       
 		    </receiver>
        		
          </config-file>
         
          <config-file target="AndroidManifest.xml" parent="/manifest/application/activity">
-        	 <!-- Notification Intent -->
-            <intent-filter>
+        	<intent-filter>
                 <action android:name="$PACKAGE_NAME.IBMPushNotification" />
 
                 <category android:name="android.intent.category.DEFAULT" />
