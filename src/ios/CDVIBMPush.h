@@ -1,10 +1,9 @@
-//
-//  CDVIBMPush.h
-//  IBMPushWorks_Cordova_IOS
-//
-//  Created by Jim Dickens on 4/10/14.
-//
-//
+//-------------------------------------------------------------------------------
+// Licensed Materials - Property of IBM
+// XXXX-XXX (C) Copyright IBM Corp. 2013,2014. All Rights Reserved.
+// US Government Users Restricted Rights - Use, duplication or
+// disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+//-------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
 #import <Cordova/CDV.h>

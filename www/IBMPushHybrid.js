@@ -1,6 +1,6 @@
 /*!
  *  Licensed Materials - Property of IBM
- *  5725-I43 (C) Copyright IBM Corp. 2011, 2014. All Rights Reserved.
+ *  (C) Copyright IBM Corp. 2013, 2014. All Rights Reserved.
  *  US Government Users Restricted Rights - Use, duplication or
  *  disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
  *
@@ -475,7 +475,7 @@ function IBMPushService(hybrid) {
   ;
   IBMPushService.prototype = {
     hybrid: null,
-    registerDevice: function (consumerId, alias, pushCallback) {
+    registerDevice: function (consumerId, alias, pushCallBack) {
       var defer = Q.defer();
       if (_.isNull(pushCallback) || !_.isFunction(pushCallback)) {
         defer.reject("Invalid Callback function");
@@ -489,11 +489,12 @@ function IBMPushService(hybrid) {
         defer.reject("Invalid customerId");
         return defer.promise;
       }
-      return this.hybrid.exec("registerDevice", [
+      defer.resolve(this.hybrid.exec("registerDevice", [
         consumerId,
         alias,
-        pushCallback
-      ]);
+        pushCallBack
+      ]));
+      return defer.promise;
     },
     subscribeTag: function (tagName) {
       var defer = Q.defer();
@@ -501,7 +502,8 @@ function IBMPushService(hybrid) {
         defer.reject("Invalid tagName property");
         return defer.promise;
       }
-      return this.hybrid.exec("subscribeTag", [tagName]);
+      defer.resolve(this.hybrid.exec("subscribeTag", [tagName]));
+      return defer.promise;
     },
     unsubscribeTag: function (tagName) {
       var defer = Q.defer();
@@ -509,7 +511,8 @@ function IBMPushService(hybrid) {
         defer.reject("Invalid tagName property");
         return defer.promise;
       }
-      return this.hybrid.exec("unsubscribeTag", [tagName]);
+      defer.resolve(this.hybrid.exec("unsubscribeTag", [tagName]));
+      return defer.promise;
     },
     getTags: function () {
       return this.hybrid.exec("getTags", []);
