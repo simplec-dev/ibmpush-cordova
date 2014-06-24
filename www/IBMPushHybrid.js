@@ -5,7 +5,7 @@
  *  disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
  *
  *  IBM Mobile Cloud Services, 
- *  IBMPush Service JavaScript SDK v1.0.0
+ *  IBMPush Service JavaScript SDK v1.0.0.20140623-2002
  *
  */
 
@@ -528,10 +528,12 @@ function IBMPushService(hybrid) {
 define('ibm/mobile/service/_IBMPush', ['require','exports','module'],function (require, exports, module) {
   
 
-var IBMPush = {
-      VERSION: "1.0.0",
+var logger = IBMLogger.getLogger();
+  var IBMPush = {
+      VERSION: "1.0.0.20140623-2002",
       _push: null,
       initializeService: function (req) {
+        logger.info("IBMPush: initializing version: " + this.getVersion());
         return this._init(req);
       },
       getVersion: function () {
