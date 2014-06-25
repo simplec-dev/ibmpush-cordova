@@ -3,12 +3,13 @@
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
     xmlns:android="http://schemas.android.com/apk/res/android"
     id="com.ibm.mobile.cordova.ibmpush"
-    version="1.0.0+20140625-1347">
+    version="1.0.0+20140625-1816">
 
     <name>IBMPush Hybrid</name>
     <description>Cordova IBMPush Plugin</description>
     <license>Apache 2.0</license>
     <keywords>cordova,IBMBluemix,IBMPush</keywords>
+    <repo>https://hub.jazz.net/git/bluemixmobilesdk/ibmpush-cordova</repo>
 
     <js-module src="www/IBMPushHybrid.js" name="hybrid">
         <clobbers target="IBMPush.hybrid" />

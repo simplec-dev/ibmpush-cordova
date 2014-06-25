@@ -15,10 +15,10 @@ or IBM Worklight application. The `IBMData` SDK manages all the invocation
 of calls to a Bluemix Mobile Cloud Node.js runtime. It allows for calls to made to 
 REST endpoints you have defined within that runtime.
 
-Version: 1.0.0+20140625-1347
+Version: 1.0.0+20140625-1816
 
 ##Installation
-The SDK may be installed either by downloading a [zip file](https://mbaas-catalog.ng.bluemix.net/sdk/ibm-baas-sdk-cordova.zip),
+The SDK may be installed either by downloading a [zip file](https://mbaas-catalog.ng.bluemix.net/sdk/ibm-bluemix-sdk-cordova.zip),
 or by installing the desired components using the [Cordova](http://cordova.apache.org/) tools.
 Using these tools can significantly shorten the startup time for new
 projects and lessen the burden of managing library version requirements
@@ -47,7 +47,7 @@ cordova plugin remove com.ibm.mobile.cordova.ibmpush
 
 ###Download
 
-To download a zip of the entire SDK, visit the Mobile Cloud [starter page](https://www.ng.bluemix.net/docs/#starters/mobile/index.html).
+To download a zip of the entire SDK, visit the Mobile Cloud [starter page](https://www.ng.bluemix.net/docs/#starters/mobile/index.html#index).
 
 ### Manual Installation
 
@@ -100,7 +100,7 @@ must be invoked before any other API calls.  IBM Bluemix provides information ab
 and access to service SDKs.
 
 ##Learning More
-- **[Mobile Cloud Services SDK Developer Guide](http://mbaas-gettingstarted.ng.bluemix.net/)**
+- **[Mobile Cloud Services SDK Developer Guide](http://mbaas-gettingstarted.ng.bluemix.net/hybrid)**
 - **[Hybrid API Reference](https://mobile.ng.bluemix.net/mbaas-api/docs/JavaScript/index.html)**
 - **[Samples and Tutorials](https://www.ng.bluemix.net/docs/#starters/mobile/index.html#samples)**
 - Visit the **[Bluemix Developers Community](https://developer.ibm.com/bluemix/)**
