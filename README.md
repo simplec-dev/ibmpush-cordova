@@ -15,7 +15,7 @@ or IBM Worklight application. The `IBMData` SDK manages all the invocation
 of calls to a Bluemix Mobile Cloud Node.js runtime. It allows for calls to made to 
 REST endpoints you have defined within that runtime.
 
-Version: |CURRENT_VERSION|
+Version: 1.0.0+20140625-1347
 
 ##Installation
 The SDK may be installed either by downloading a [zip file](https://mbaas-catalog.ng.bluemix.net/sdk/ibm-baas-sdk-cordova.zip),
