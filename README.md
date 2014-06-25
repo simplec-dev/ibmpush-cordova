@@ -100,15 +100,14 @@ must be invoked before any other API calls.  IBM Bluemix provides information ab
 and access to service SDKs.
 
 ##Learning More
-To learn more about using the SDK, please consult the following resources:
-- [Mobile Cloud Services SDK Developer Guide](http://mbaas-gettingstarted.ng.bluemix.net/)
-- [Hybrid API Reference](https://mobile.ng.bluemix.net/mbaas-api/docs/JavaScript/index.html)
-- [Samples and Tutorials](https://www.ng.bluemix.net/docs/#starters/mobile/index.html#samples)
-- Visit the [Bluemix Developers Community](https://developer.ibm.com/bluemix/)
+- **[Mobile Cloud Services SDK Developer Guide](http://mbaas-gettingstarted.ng.bluemix.net/)**
+- **[Hybrid API Reference](https://mobile.ng.bluemix.net/mbaas-api/docs/JavaScript/index.html)**
+- **[Samples and Tutorials](https://www.ng.bluemix.net/docs/#starters/mobile/index.html#samples)**
+- Visit the **[Bluemix Developers Community](https://developer.ibm.com/bluemix/)**
 
 To learn more about Cordova and its related services and plugins, please consult the following resources:
-- [Cordova Documentation](http://cordova.apache.org/docs/en/3.0.0/guide_overview_index.md.html#Overview)
-- [Cordova plugin development guide](http://cordova.apache.org/docs/en/2.2.0/guide_plugin-development_index.md.html#Plugin%20Development%20Guide)
+- **[Cordova Documentation](http://cordova.apache.org/docs/en/3.0.0/guide_overview_index.md.html#Overview)**
+- **[Cordova plugin development guide](http://cordova.apache.org/docs/en/2.2.0/guide_plugin-development_index.md.html#Plugin%20Development%20Guide)**
 
 Connect with Bluemix: [Twitter](https://twitter.com/ibmbluemix) |
 [YouTube](https://www.youtube.com/playlist?list=PLzpeuWUENMK2d3L5qCITo2GQEt-7r0oqm) |
