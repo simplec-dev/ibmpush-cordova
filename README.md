@@ -1,43 +1,33 @@
-Push service SDK for IBM Bluemix
+Mobile Cloud Services Push Cordova SDK for IBM Bluemix
 ===
 
-BlueMix supports IBM's MobileFirst strategy by allowing you as a mobile developer to quickly incorporate pre-built, managed, and scalable cloud services into your mobile applications without relying on IT involvement. You can focus on building your mobile applications rather than the complexities of managing the back end infrastructure.
+This package contains the required native components to interact with the IBM
+Bluemix Mobile Cloud Services.  This JavaScript SDK can be used for building Web 
+or Hybrid applications.  The SDK manages all the communication and security integration between 
+the client and with the Mobile Cloud Services in Bluemix.
 
-When you create a Mobile Cloud Starter application, BlueMix provisions multiple services under a single application context. Your mobile application is given access to the following mobile services: Mobile Application Security, Push, and Mobile Data.
+When you use Bluemix to create a Mobile Cloud Starter application, BlueMix provisions 
+multiple services under a single application context. Your mobile application is given 
+access to the following mobile services: Mobile Application Security, Push, and Mobile Data.
 
-About
----
+The Mobile Cloud Services Mobile Data SDK is a Cordova SDK you can use inside a Cordova 
+or IBM Worklight application. The `IBMData` SDK manages all the invocation 
+of calls to a Bluemix Mobile Cloud Node.js runtime. It allows for calls to made to 
+REST endpoints you have defined within that runtime.
 
-The Hybrid JavaScript SDK uses the underlying Cordova runtime to hosting your hybrid application. This SDK then forms a bridge between the Web View and the Mobile Starter Native SDK. With this library you can:
+Version: |CURRENT_VERSION|
 
-- Reuse the code that is implemented within the Native toolkits, offering a single point of interaction between the Hybrid application and the BlueMix services.
-- Use a single native domain for communication. Take advantage of a single point of security when communicating with BlueMix.
-- Maintain security state of your application if the WebView is restarted on iOS (Apple 10 second rule).
-- Reduce memory overhead of the WebView because less JavaScript is required for the the communication.
-- Communicate through the same technology channel with both both Native and Hybrid (Cross Platform) content.
-- Improve performance when you are using the Native tier of the application for processing of requests.
+##Installation
+The SDK may be installed either by downloading a [zip file](https://mbaas-catalog.ng.bluemix.net/sdk/ibm-baas-sdk-cordova.zip),
+or by installing the desired components using the [Cordova](http://cordova.apache.org/) tools.
+Using these tools can significantly shorten the startup time for new
+projects and lessen the burden of managing library version requirements
+as well as the dependencies between them.  If you
+are using one of our [samples](https://hub.jazz.net/user/mobilecloud),
+instructions for using the package manager is included with the documentation.
 
-IBMPush - Cordova
-===
-
-The Mobile Cloud Services SDK is a Cordova SDK you can use inside a Cordova or IBM Worklight application. The `IBMPush` SDK manages all the invocation of calls to the IBM Bluemix Push Service.
-
-Cordova
----
-You can find out more information about Cordova and its related services and plugins at the following links.
-
-###Cordova Documentation:
-
-http://cordova.apache.org/docs/en/3.0.0/guide_overview_index.md.html#Overview
-
-###Cordova plugin development guide
-http://cordova.apache.org/docs/en/2.2.0/guide_plugin-development_index.md.html#Plugin%20Development%20Guide
-
-## Getting Started Guide
-
-Before you download the plugin or add it to your project you may want to have a read through the more detailed `Getting Started Guide`. For quick usage information, see the [Getting Started Guide](https://mbaas-gettingstarted.ng.bluemix.net/hybrid)
-
-## Setup
+The Mobile Cloud Services SDK is a Cordova SDK you can use inside a Cordova or IBM Worklight 
+application. 
 
 To create add a plugin to your project, you first need to have installed the Cordova tools and created a project. You can find more information on how to achieve this from the Cordova project [Command Line Interface](http://cordova.apache.org/docs/en/3.5.0/guide_cli_index.md.html#The%20Command-Line%20Interface)
 
@@ -55,31 +45,81 @@ To install the plugin use the following cordova command
 cordova plugin remove com.ibm.mobile.cordova.ibmpush
 ```
 
-## Manual Installation
+###Download
 
-IBM Worklight is a Cordova based Hybrid application platform. You can find more information about IBM Worklight at this link [IBM Worklight Foundation](http://www-03.ibm.com/software/products/en/worklight-foundation)
+To download a zip of the entire SDK, visit the Mobile Cloud [starter page](https://www.ng.bluemix.net/docs/#starters/mobile/index.html).
 
-Detailed instructions of how to install the plugin inside an IBM Worklight development environment can be found in the [Getting Started Guide](https://mbaas-gettingstarted.ng.bluemix.net/hybrid)
+### Manual Installation
 
-## IBMPush.hybrid API 
+IBM Worklight is a Cordova based Hybrid application platform. You can find more information 
+about IBM Worklight at this link [IBM Worklight Foundation](http://www-03.ibm.com/software/products/en/worklight-foundation)
 
-For more information, see the [API Reference](https://mobile.ng.bluemix.net/mbaas-api/docs/JavaScript/index.html)
+Detailed instructions of how to install the plugin inside an IBM Worklight development environment 
+can be found in the [Getting Started Guide](https://mbaas-gettingstarted.stage1.ng.bluemix.net/hybrid)
 
-## Supported Platforms
+###Contents
 
+The complete SDK consists of a core, plus a collection of modules that correspond to function exposed
+by the Mobile Cloud Services.  The downloaded zip file
+contains all of them. However, each piece of the JavaScript SDK is also available as a separate module
+that you can add to your project individually. This allows maximum flexibility, as the developer is able to 
+pick and choose the modules required for a given application. 
+
+The Hybrid JavaScript SDK uses the underlying Cordova runtime to hosting your hybrid application. This SDK then forms a bridge between the Web View and the Mobile Starter Native SDK. With this library you can:
+
+- Reuse the code that is implemented within the Native toolkits, offering a single point of interaction between the Hybrid application and the BlueMix services.
+- Use a single native domain for communication. Take advantage of a single point of security when communicating with BlueMix.
+- Maintain security state of your application if the WebView is restarted on iOS (Apple 10 second rule).
+- Reduce memory overhead of the WebView because less JavaScript is required for the the communication.
+- Communicate through the same technology channel with both both Native and Hybrid (Cross Platform) content.
+- Improve performance when you are using the Native tier of the application for processing of requests.
+
+
+The Cordova SDK contains the following components, any of which may be added to your project.
+
+- **[ibmbluemix](https://hub.jazz.net/project/bluemixmobilesdk/ibmbluemix-cordova/overview)** - This is the foundation of the SDK and controls connection and communication with Backend services
+- **[ibmpush](https://hub.jazz.net/project/bluemixmobilesdk/ibmpush-cordova/overview)** - This is the service SDK for push notification support
+- **[ibmdata](https://hub.jazz.net/project/bluemixmobilesdk/ibmdata-cordova/overview)** - This is the service SDK for cloud data storage
+- **[ibmfilesync](https://hub.jazz.net/project/bluemixmobilesdk/ibmfilesync-cordova/overview)** - This is the service SDK for cloud file storage
+- **[ibmcloudcode](https://hub.jazz.net/project/bluemixmobilesdk/ibmcloudcode-cordova/overview)** - This is the service SDK for cloud code invocation
+- **[ibmlocation](https://hub.jazz.net/project/bluemixmobilesdk/ibmlocation-cordova/overview)** - This is the service SDK for the Beta level mobile location services
+- **docs/** - This directory contains the documentation for the SDK
+
+### Supported Platforms
 - Android
 - iOS
 
-Services
---
+##Getting Started:
 
-Each of the services for the Cordova SDK is in a separate plugin that you can add to your project individually.
+Services are associated with a Mobile Cloud application. Connectivity and interaction with
+these services depends on the application id, application secret, and application route associated
+with a Mobile Cloud Application.
 
-This allows maximum flexibility to the developer to individually pick and choose the services that are key to the application. The JavaScript SDK contains the following services.
+IBMBluemix is the entry point for interacting with the Mobile Cloud Services SDKs.  The method initialize
+must be invoked before any other API calls.  IBM Bluemix provides information about the current SDK level
+and access to service SDKs.
 
-- [ibmbluemix](https://hub.jazz.net/project/bluemixmobilesdk/ibmbluemix-cordova/overview)
-- [ibmcloudcode](https://hub.jazz.net/project/bluemixmobilesdk/ibmcloudcode-cordova/overview)
-- [ibmdata](https://hub.jazz.net/project/bluemixmobilesdk/ibmdata-cordova/overview)
-- [ibmpush](https://hub.jazz.net/project/bluemixmobilesdk/ibmpush-cordova/overview)
+##Learning More
+To learn more about using the SDK, please consult the following resources:
+- [Mobile Cloud Services SDK Developer Guide](http://mbaas-gettingstarted.ng.bluemix.net/)
+- [Hybrid API Reference](https://mobile.ng.bluemix.net/mbaas-api/docs/JavaScript/index.html)
+- [Samples and Tutorials](https://www.ng.bluemix.net/docs/#starters/mobile/index.html#samples)
+- Visit the [Bluemix Developers Community](https://developer.ibm.com/bluemix/)
 
-Each one of these services can be added to your project.
+To learn more about Cordova and its related services and plugins, please consult the following resources:
+- [Cordova Documentation](http://cordova.apache.org/docs/en/3.0.0/guide_overview_index.md.html#Overview)
+- [Cordova plugin development guide](http://cordova.apache.org/docs/en/2.2.0/guide_plugin-development_index.md.html#Plugin%20Development%20Guide)
+
+Connect with Bluemix: [Twitter](https://twitter.com/ibmbluemix) |
+[YouTube](https://www.youtube.com/playlist?list=PLzpeuWUENMK2d3L5qCITo2GQEt-7r0oqm) |
+[Blog](https://developer.ibm.com/bluemix/blog/) |
+[Facebook](https://www.facebook.com/ibmbluemix) |
+[Meetup](http://www.meetup.com/bluemix/)
+
+*Licensed Materials - Property of IBM
+(C) Copyright IBM Corp. 2013, |CURRENT_YEAR|. All Rights Reserved.
+US Government Users Restricted Rights - Use, duplication or
+disclosure restricted by GSA ADP Schedule Contract with IBM Corp.*
+
+[Terms of Use](https://hub.jazz.net/project/bluemixmobilesdk/ibmbluemix-android/overview#https://hub.jazz.net/gerrit/plugins/gerritfs/contents/bluemixmobilesdk%252Fibmbluemix-android/refs%252Fheads%252Fmaster/License.txt) |
+[Notices]()

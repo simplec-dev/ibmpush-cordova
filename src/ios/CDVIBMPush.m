@@ -42,9 +42,6 @@ static NSString* callbackString;
                         stringByReplacingOccurrencesOfString: @">" withString: @""]
                        stringByReplacingOccurrencesOfString: @" " withString: @""];
     
-    NSLog(@"alias is %@ and consumerId is %@", alias, consumerId);
-    NSLog(@"Device token is: %@", token);
-    
     if (_push == nil) {
         result = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Push Service not initialized."];
         [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
@@ -198,7 +195,21 @@ NSMutableString *escape(NSString *source) {
 
 - (void) notificationReceived: (NSDictionary*) notification
 {
-    NSString *sendToJS = [NSString stringWithFormat:@"%@(\"%@\");", callbackString, escape(notification.description)];
+    NSMutableDictionary *finalNotification = [[NSMutableDictionary alloc]init];
+    NSMutableDictionary* payloadDict = [[NSMutableDictionary alloc]init];
+    [finalNotification setValue:[notification objectForKey:@"URL"] forKey:@"URL"];
+    NSDictionary *alertDict = [[notification objectForKey:@"aps"] objectForKey:@"alert"];
+    [finalNotification setValue:[alertDict objectForKey:@"body"] forKey:@"alert"];
+    
+    for (id key in notification)
+    {
+        if ((![key  isEqual: @"URL"]) && (![key  isEqual: @"SN"]) && (![key  isEqual: @"aps"])){
+            [payloadDict setValue:[notification objectForKey:key] forKey:key];
+        }
+    }
+    [finalNotification setValue:payloadDict forKey:@"payload"];
+
+    NSString *sendToJS = [NSString stringWithFormat:@"%@(\"%@\");", callbackString, escape(finalNotification.description)];
     [self.webView stringByEvaluatingJavaScriptFromString:sendToJS];
 }
 

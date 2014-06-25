@@ -5,7 +5,7 @@
  *  disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
  *
  *  IBM Mobile Cloud Services, 
- *  IBMPush Service JavaScript SDK v1.0.0.20140624-1520
+ *  IBMPush Service JavaScript SDK v1.0.0.20140625-0729
  *
  */
 
@@ -468,37 +468,38 @@ function IBMPushService(hybrid) {
       throw new Error("IBMBluemix has not been initialised");
     }
     if (_.isNull(hybrid) || !_.isObject(hybrid)) {
-      throw new Error("IBMHyrbid class has not been passed to this module");
+      throw new Error("IBMHybrid class has not been passed to this module");
     }
     this.hybrid = hybrid;
+    return this;
   }
   ;
   IBMPushService.prototype = {
     hybrid: null,
-    registerDevice: function (consumerId, alias, pushCallBack) {
+    registerDevice: function (consumerId, alias, pushCallback) {
       var defer = Q.defer();
-      if (_.isNull(pushCallback) || !_.isFunction(pushCallback)) {
-        defer.reject("Invalid Callback function");
+      if (_.isNull(pushCallback) || !_.isString(pushCallback)) {
+        defer.reject("Invalid value specified for Callback function");
         return defer.promise;
       }
       if (_.isNull(alias) || !_.isString(alias)) {
-        defer.reject("Invalid alias");
+        defer.reject("Invalid value specfied for alias property");
         return defer.promise;
       }
-      if (_.isNull(customerId) || !_.isString(customerId)) {
-        defer.reject("Invalid customerId");
+      if (_.isNull(consumerId) || !_.isString(consumerId)) {
+        defer.reject("Invalid value specified for consumerId property");
         return defer.promise;
       }
       defer.resolve(this.hybrid.exec("registerDevice", [
         consumerId,
         alias,
-        pushCallBack
+        pushCallback
       ]));
       return defer.promise;
     },
     subscribeTag: function (tagName) {
       var defer = Q.defer();
-      if (!_.isString(tagName)) {
+      if (_.isNull(tagName) || !_.isString(tagName)) {
         defer.reject("Invalid tagName property");
         return defer.promise;
       }
@@ -507,7 +508,7 @@ function IBMPushService(hybrid) {
     },
     unsubscribeTag: function (tagName) {
       var defer = Q.defer();
-      if (!_.isString(tagName)) {
+      if (_.isNull(tagName) || !_.isString(tagName)) {
         defer.reject("Invalid tagName property");
         return defer.promise;
       }
@@ -530,10 +531,10 @@ define('ibm/mobile/service/_IBMPush', ['require','exports','module'],function (r
 
 var logger = IBMLogger.getLogger();
   var IBMPush = {
-      VERSION: "1.0.0.20140624-1520",
+      VERSION: "1.0.0.20140625-0729",
       _push: null,
       initializeService: function (req) {
-        logger.info("IBMPush: initializing version: " + this.getVersion());
+        logger.debug("IBMPush: initializing version: " + this.getVersion());
         return this._init(req);
       },
       getVersion: function () {
@@ -1601,14 +1602,20 @@ var IBMPushHybrid = _.extend({}, _IBMPush, {
           this.hybrid = new IBMHybrid("IBMPushHybrid");
         }
         var defer = Q.defer();
+        var self = this;
         try {
           this.hybrid.exec("initializeService", []).then(function () {
-            this._push = new IBMPushService(hybrid);
-            if (!_.isObject(this._push)) {
+            try {
+              self._push = new IBMPushService(self.hybrid);
+            } catch (e) {
+              defer.reject("IBMPush Hybrid could not be initialized. " + e);
+              return defer.promise;
+            }
+            if (!_.isObject(self._push)) {
               defer.reject("Failed to create IBM Push Service object");
               return defer.promise;
             }
-            defer.resolve(this._push);
+            defer.resolve(self._push);
           }, function () {
             defer.reject("IBMPush Hybrid could not be initialized");
           });
