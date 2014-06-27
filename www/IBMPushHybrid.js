@@ -5,7 +5,7 @@
  *  disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
  *
  *  IBM Mobile Cloud Services, 
- *  IBMPush Service JavaScript SDK v1.0.0.20140627-0636
+ *  IBMPush Service JavaScript SDK v1.0.0.20140627-1249
  *
  */
 
@@ -463,23 +463,23 @@ define("almond", function(){});
 define('ibm/mobile/service/push/IBMPushService', ['require','exports','module'],function (require, exports, module) {
   
 
-var logger = IBMLogger.getLogger();
-  function IBMPushService(hybrid) {
+function IBMPushService(hybrid) {
     if (!(IBMBluemix && Q && _ && IBMHybrid)) {
-      logger.error("IBMBluemix has not been initialised");
       throw new Error("IBMBluemix has not been initialised");
     }
+    this.logger = IBMLogger.getLogger();
     if (_.isNull(hybrid) || !_.isObject(hybrid)) {
-      logger.error("IBMHybrid class has not been passed to this module");
+      this.logger.error("IBMHybrid class has not been passed to this module");
       throw new Error("IBMHybrid class has not been passed to this module");
     }
     this.hybrid = hybrid;
-    logger.debug("IBMPush: Push service initialized successfully");
+    this.logger.debug("IBMPush: Push service initialized successfully");
     return this;
   }
   ;
   IBMPushService.prototype = {
     hybrid: null,
+    logger: null,
     registerDevice: function (alias, consumerId, pushCallback) {
       var defer = Q.defer();
       logger.debug("IBMPush: Received request to register device");
@@ -541,7 +541,7 @@ define('ibm/mobile/service/_IBMPush', ['require','exports','module'],function (r
 
 var logger = IBMLogger.getLogger();
   var IBMPush = {
-      VERSION: "1.0.0.20140627-0636",
+      VERSION: "1.0.0.20140627-1249",
       _push: null,
       initializeService: function (req) {
         logger.debug("IBMPush: initializing version: " + this.getVersion());
