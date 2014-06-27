@@ -5,7 +5,7 @@
  *  disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
  *
  *  IBM Mobile Cloud Services, 
- *  IBMPush Service JavaScript SDK v1.0.0.20140626-1937
+ *  IBMPush Service JavaScript SDK v1.0.0.20140627-0636
  *
  */
 
@@ -480,7 +480,7 @@ var logger = IBMLogger.getLogger();
   ;
   IBMPushService.prototype = {
     hybrid: null,
-    registerDevice: function (consumerId, alias, pushCallback) {
+    registerDevice: function (alias, consumerId, pushCallback) {
       var defer = Q.defer();
       logger.debug("IBMPush: Received request to register device");
       if (_.isNull(pushCallback) || !_.isString(pushCallback)) {
@@ -541,7 +541,7 @@ define('ibm/mobile/service/_IBMPush', ['require','exports','module'],function (r
 
 var logger = IBMLogger.getLogger();
   var IBMPush = {
-      VERSION: "1.0.0.20140626-1937",
+      VERSION: "1.0.0.20140627-0636",
       _push: null,
       initializeService: function (req) {
         logger.debug("IBMPush: initializing version: " + this.getVersion());
