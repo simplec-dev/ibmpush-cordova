@@ -5,7 +5,7 @@
  *  disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
  *
  *  IBM Mobile Cloud Services, 
- *  IBMPush Service JavaScript SDK v1.0.0.20140626-1346
+ *  IBMPush Service JavaScript SDK v1.0.0.20140626-1914
  *
  */
 
@@ -541,7 +541,7 @@ define('ibm/mobile/service/_IBMPush', ['require','exports','module'],function (r
 
 var logger = IBMLogger.getLogger();
   var IBMPush = {
-      VERSION: "1.0.0.20140626-1346",
+      VERSION: "1.0.0.20140626-1914",
       _push: null,
       initializeService: function (req) {
         logger.debug("IBMPush: initializing version: " + this.getVersion());
@@ -1605,13 +1605,14 @@ define('ibm/mobile/service/IBMPushHybrid', ['require', 'exports', 'module', './p
 var IBMPushHybrid = _.extend({}, _IBMPush, {
       hybrid: null,
       _init: function () {
+        var defer = Q.defer();
         if (!(IBMBluemix && Q && _ && IBMHybrid)) {
-          throw new Error("IBMBluemix has not been initialised");
+          defer.reject("IBMBluemix has not been initialised");
+          return defer.promise;
         }
         if (_.isNull(this.hybrid) || !_.isObject(this.hybrid)) {
           this.hybrid = new IBMHybrid("IBMPushHybrid");
         }
-        var defer = Q.defer();
         var self = this;
         try {
           this.hybrid.exec("initializeService", []).then(function () {
