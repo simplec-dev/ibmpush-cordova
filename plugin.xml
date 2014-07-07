@@ -3,7 +3,7 @@
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
     xmlns:android="http://schemas.android.com/apk/res/android"
     id="com.ibm.mobile.cordova.ibmpush"
-    version="1.0.0-20140707-1209">
+    version="1.0.0-20140707-1250">
 
     <name>IBMPush Hybrid</name>
     <description>Cordova IBMPush Plugin</description>
