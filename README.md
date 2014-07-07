@@ -13,7 +13,7 @@ access to the following mobile services: Mobile Application Security, Push, and 
 The Mobile Cloud Services Push SDK is a Cordova SDK you can use inside a Cordova
 or IBM Worklight application. The `IBMPush` SDK manages push notification through IBM Bluemix. This service is backed by Xtify and offers industry strenght push notifciations for IOS and Android. The Hybrid plugin allows the subscription to these notification.
 
-Version: 1.0.0-20140707-1042
+Version: 1.0.0-20140707-1209
 
 ##Installation
 The SDK may be installed either by downloading a [zip file](https://mbaas-catalog.ng.bluemix.net/sdk/ibm-bluemix-sdk-cordova.zip),
@@ -118,7 +118,7 @@ Connect with Bluemix: [Twitter](https://twitter.com/ibmbluemix) |
 [Meetup](http://www.meetup.com/bluemix/)
 
 *Licensed Materials - Property of IBM
-(C) Copyright IBM Corp. 2013, |CURRENT_YEAR|. All Rights Reserved.
+(C) Copyright IBM Corp. 2013, 2014. All Rights Reserved.
 US Government Users Restricted Rights - Use, duplication or
 disclosure restricted by GSA ADP Schedule Contract with IBM Corp.*
 
