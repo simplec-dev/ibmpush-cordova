@@ -13,7 +13,7 @@ access to the following mobile services: Mobile Application Security, Push, and 
 The Mobile Cloud Services Push SDK is a Cordova SDK you can use inside a Cordova
 or IBM Worklight application. The `IBMPush` SDK manages push notification through IBM Bluemix. This service is backed by Xtify and offers industry strenght push notifciations for IOS and Android. The Hybrid plugin allows the subscription to these notification.
 
-Version: 1.0.0-20140718-1253
+Version: 1.0.0-20140722-1239
 
 ##Installation
 The SDK may be installed either by downloading a [zip file](https://mbaas-catalog.ng.bluemix.net/sdk/ibm-bluemix-sdk-cordova.zip),
@@ -79,13 +79,10 @@ The Hybrid JavaScript SDK uses the underlying Cordova runtime to hosting your hy
 
 The Cordova SDK contains the following components, any of which may be added to your project.
 
-- **[ibmbluemix](https://hub.jazz.net/project/bluemixmobilesdk/ibmbluemix-cordova/overview)** - This is the foundation of the SDK and controls connection and communication with Backend services
-- **[ibmpush](https://hub.jazz.net/project/bluemixmobilesdk/ibmpush-cordova/overview)** - This is the service SDK for push notification support
-- **[ibmdata](https://hub.jazz.net/project/bluemixmobilesdk/ibmdata-cordova/overview)** - This is the service SDK for cloud data storage
-- **[ibmfilesync](https://hub.jazz.net/project/bluemixmobilesdk/ibmfilesync-cordova/overview)** - This is the service SDK for cloud file storage
-- **[ibmcloudcode](https://hub.jazz.net/project/bluemixmobilesdk/ibmcloudcode-cordova/overview)** - This is the service SDK for cloud code invocation
-- **[ibmlocation](https://hub.jazz.net/project/bluemixmobilesdk/ibmlocation-cordova/overview)** - This is the service SDK for the Beta level mobile location services
-- **docs/** - This directory contains the documentation for the SDK
+- **[ibmbluemix](https://hub.jazz.net/project/bluemixmobilesdk/ibmbluemix-javascript/overview)** - This is the foundation of the SDK and controls connection and communication with Backend services
+- **[ibmpush](https://hub.jazz.net/project/bluemixmobilesdk/ibmpush-javascript/overview)** - This is the service SDK for push notification support
+- **[ibmdata](https://hub.jazz.net/project/bluemixmobilesdk/ibmdata-javascript/overview)** - This is the service SDK for cloud data storage
+- **[ibmcloudcode](https://hub.jazz.net/project/bluemixmobilesdk/ibmcloudcode-javascript/overview)** - This is the service SDK for cloud code invocation
 
 ### Supported Platforms
 - Android
